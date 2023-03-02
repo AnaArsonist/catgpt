@@ -1,6 +1,6 @@
 # React Web Starter
 
-👋 Hiya, this is a starter kit for building a React web app. This starter kit uses [Next.js](https://nextjs.org/),[Tailwind CSS](https://tailwindcss.com/) and [TypeScript](https://www.typescriptlang.org/).
+👋 Hiya, this is a starter kit for building a React web app. This starter kit uses [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) and [TypeScript](https://www.typescriptlang.org/).
 
 ## Getting Started
 
