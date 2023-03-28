@@ -7,7 +7,7 @@ import {
   export type Agent = 'user' | 'system' | 'assistant'
   
   export interface Message {
-    role: ChatGPTAgent
+    role: Agent
     content: string
   }
   
