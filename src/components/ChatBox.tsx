@@ -2,83 +2,79 @@ import { ArrowNarrowUpIcon } from "@heroicons/react/solid";
 import Reply from "./Reply";
 import { useState, useRef } from "react";
 import { Message } from "@/lib/openai";
+import { motion } from "framer-motion";
 
 function ChatBox() {
+  const messagesRef = useRef<HTMLDivElement>(null);
 
-  const messagesRef = useRef<HTMLDivElement>(null)
-
-  const [messages, setMessages] = useState<Message[]>([])
-  const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState('')
-  console.log(messages)
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  console.log(messages);
   // send message to API /api/chat endpoint
   const sendMessage = async () => {
-    setLoading(true)
+    setLoading(true);
 
     const newMessages = [
       ...messages,
-      { role: 'user', content: message } as Message,
-    ]
+      { role: "user", content: message } as Message,
+    ];
 
-    setMessage('')
+    setMessage("");
 
-    setMessages(newMessages)
+    setMessages(newMessages);
 
-    const response = await fetch('/api/chat', {
-      method: 'POST',
+    const response = await fetch("/api/chat", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         messages: newMessages.slice(-10), // remember last 10 messages
       }),
-    })
+    });
 
     if (!response.ok) {
-      throw new Error(response.statusText)
+      throw new Error(response.statusText);
     }
 
-    if (!response.body) return
+    if (!response.body) return;
 
-    const reader = response.body.getReader()
-    const decoder = new TextDecoder()
-    let done = false
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
 
-    let lastMessage = ''
+    let lastMessage = "";
 
     while (!done) {
-      const { value, done: doneReading } = await reader.read()
-      done = doneReading
-      const chunkValue = decoder.decode(value)
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      const chunkValue = decoder.decode(value);
 
-      lastMessage = lastMessage + chunkValue
+      lastMessage = lastMessage + chunkValue;
 
       setMessages([
         ...newMessages,
-        { role: 'assistant', content: lastMessage } as Message,
-      ])
+        { role: "assistant", content: lastMessage } as Message,
+      ]);
 
-      messagesRef.current?.scrollIntoView({ block: 'end' })
+      messagesRef.current?.scrollIntoView({ block: "end" });
 
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <div>
-      <div className="w-80 border-gray-200 shadow-sm border-2 p-4 rounded-2xl">
+    <div className="w-96 p-4 rounded-2xl bg-white/20 backdrop-filter backdrop-blur-lg backdrop-saturate-150">
+      <div className="bg-gray-100 border-gray-200 shadow-sm border-2 p-4 rounded-2xl">
         {/* <!--  Message header section starts    --> */}
         <div className="msg-header flex gap-8 items-center">
           <div className="h-12 w-12 justify-center items-center rounded-full border-2">
             <img className="scale-75" src="/images/cat-face.png" />
           </div>
-          <div className="user-info">
-            <h3 className="user-name text-gray-400 text-sm font-medium">
-              CatGPT
-            </h3>
-            <p className="user-status text-green-400 text-xs animate-pulse">
-              Active now
-            </p>
+          <div className="">
+            <h3 className="text-gray-400 text-sm font-medium">CatGPT</h3>
+            <p className="text-green-400 text-xs animate-pulse">Active now</p>
           </div>
         </div>
         {/* {/* <!-- Message header section ends --> */}
@@ -90,16 +86,28 @@ function ChatBox() {
               <div className="mt-6">
                 {/* <!-- Contains the incoming and outgoing messages --> */}
                 <div ref={messagesRef} className="">
-                  <div className="scale-95 mr-16">
+                  <motion.div
+                    animate={{
+                      opacity: [0, 1],
+                    }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 0.2,
+                    }}
+                    className="scale-95 mr-16"
+                  >
                     <p className="bg-gray-200 rounded-3xl p-3 text-xs">
                       Hi I'm CatGPT, what can I help you with?
                     </p>
-                  </div>
-                  
-                  {messages.map((message, index) => (
-                    <Reply key={index} message={message.content} role={message.role} />
-                  ))}
+                  </motion.div>
 
+                  {messages.map((message, index) => (
+                    <Reply
+                      key={index}
+                      message={message.content}
+                      role={message.role}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -111,16 +119,17 @@ function ChatBox() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      sendMessage()
+                    if (e.key === "Enter") {
+                      sendMessage();
                     }
                   }}
-                  className="bg-[gray-200] border-2 rounded-3xl p-3 w-full text-xs focus:outline-none"
+                  className="bg-gray-200 border-2 rounded-3xl p-3 w-full text-xs focus:outline-none"
                   placeholder="Type a message"
                 />
-                <button 
-                onClick={sendMessage}
-                className="bg-[#B2A4FF] text-xs text-white rounded-full p-3">
+                <button
+                  onClick={sendMessage}
+                  className="bg-[#B2A4FF] text-xs text-white rounded-full p-3"
+                >
                   <ArrowNarrowUpIcon className="h-4 w-4" />
                 </button>
               </div>
