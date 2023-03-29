@@ -83,7 +83,7 @@ function ChatBox() {
         <div className="grow md:h-[52vh]">
           <div className="h-full">
             <div className="h-full overflow-auto scrollbar" id="style-1">
-              <div className="mt-6">
+              <div className="mt-6 transition-all">
                 {/* <!-- Contains the incoming and outgoing messages --> */}
                 <div ref={messagesRef} className="">
                   <motion.div
