@@ -65,8 +65,8 @@ function ChatBox() {
   };
 
   return (
-    <div className="w-96 p-4 rounded-2xl bg-white/20 backdrop-filter backdrop-blur-lg backdrop-saturate-150">
-      <div className="bg-gray-100 border-gray-200 shadow-sm border-2 p-4 rounded-2xl">
+    <div className="w-screen h-full sm:h-fit sm:w-96 p-4 rounded-2xl bg-white/20 backdrop-filter backdrop-blur-lg backdrop-saturate-150">
+      <div className="h-full flex flex-col sm:h-fit bg-gray-100 border-gray-200 shadow-sm border-2 p-4 rounded-2xl">
         {/* <!--  Message header section starts    --> */}
         <div className="msg-header flex gap-8 items-center">
           <div className="h-12 w-12 justify-center items-center rounded-full border-2">
@@ -80,9 +80,12 @@ function ChatBox() {
         {/* {/* <!-- Message header section ends --> */}
         <div className="mt-2 bg-gray-300 w-72 h-[1.75px]"></div>
         {/* <!-- Chat inbox section starts --> */}
-        <div className="">
+        <div className="grow">
           <div className="">
-            <div className="overflow-auto scrollbar h-64" id="style-1">
+            <div
+              className="overflow-auto scrollbar h-auto sm:h-64 md:h-[52vh]"
+              id="style-1"
+            >
               <div className="mt-6">
                 {/* <!-- Contains the incoming and outgoing messages --> */}
                 <div ref={messagesRef} className="">
@@ -113,27 +116,27 @@ function ChatBox() {
             </div>
 
             {/* <!--  Message bottom section starts --> */}
-            <div className="msg-bottom mt-2">
-              <div className="msg-input flex gap-2 items-center">
-                <input
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      sendMessage();
-                    }
-                  }}
-                  className="bg-gray-200 border-2 rounded-3xl p-3 w-full text-xs focus:outline-none"
-                  placeholder="Type a message"
-                />
-                <button
-                  onClick={sendMessage}
-                  className="bg-[#B2A4FF] text-xs text-white rounded-full p-3"
-                >
-                  <ArrowNarrowUpIcon className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
+          </div>
+        </div>
+        <div className="msg-bottom mt-2">
+          <div className="msg-input flex gap-2 items-center">
+            <input
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  sendMessage();
+                }
+              }}
+              className="bg-gray-200 border-2 rounded-3xl p-3 w-full text-xs focus:outline-none"
+              placeholder="Type a message"
+            />
+            <button
+              onClick={sendMessage}
+              className="bg-[#B2A4FF] text-xs text-white rounded-full p-3"
+            >
+              <ArrowNarrowUpIcon className="h-4 w-4" />
+            </button>
           </div>
         </div>
       </div>
