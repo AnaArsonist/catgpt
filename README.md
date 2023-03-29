@@ -1,6 +1,6 @@
 # CatGPT 🐱
 
-![pika-1680053529780-1x](https://user-images.githubusercontent.com/113212503/228513070-793e5cc5-41fd-4f14-a6a7-c919e95ca602.jpeg)
+![catgpt](https://user-images.githubusercontent.com/10339043/228605861-41f09327-67f7-4fa3-bc27-bf3c76b18ed2.png)
 
 Welcome to CatGPT, a GPT-3.5-turbo (the model that runs ChatGPT) model that behaves like a cat! Ask it anything and it will give you the purrfect response!
 
