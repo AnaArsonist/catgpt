@@ -6,7 +6,7 @@ function Home() {
     <div className="flex-col h-screen w-screen flex items-center justify-center purple-bg font-nunito">
       <img
         src="images/bg.svg"
-        className="absolute block min-h-screen min-w-screen w-screen object-cover inset-0"
+        className="absolute block h-full w-full object-cover inset-0"
       />
       <ChatBox />
       <div className="sm:absolute sm:bottom-0 p-4 sm:p-0 z-10 sm:right-0 sm:mb-4 sm:mr-4 flex gap-2 items-center group">
