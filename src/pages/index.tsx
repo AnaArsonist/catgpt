@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 
 function Home() {
   return (
-    <div className="h-screen w-screen flex items-center justify-center purple-bg font-nunito">
+    <div className="flex-col h-screen w-screen flex items-center justify-center purple-bg font-nunito">
       <img
         src="images/bg.svg"
         className="absolute block min-h-screen min-w-screen object-cover inset-0"
       />
       <ChatBox />
-      <div className="absolute bottom-0 right-0 mb-4 mr-4 flex gap-2 items-center group">
-        <div className="transition-all duration-300 text-white/0 group-hover:text-white/60">
+      <div className="sm:absolute sm:bottom-0 p-4 sm:p-0 z-10 sm:right-0 sm:mb-4 sm:mr-4 flex gap-2 items-center group">
+        <div className="hidden sm:block transition-all duration-300 text-white/0 group-hover:text-white/60">
           follow me on twitter! 🐱
         </div>
         <a
