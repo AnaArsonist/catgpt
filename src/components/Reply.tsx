@@ -60,7 +60,7 @@ function Reply({ message, role }: { role: Agent; message: string }) {
         }}
         className="mt-2 scale-95 flex items-center justify-end"
       >
-        <p className="bg-[#B2A4FF] text-white rounded-3xl p-3 text-xs">
+        <p className="bg-[#B2A4FF] text-white rounded-3xl p-3 px-4">
           {formattedMessage}
         </p>
       </motion.div>
@@ -78,7 +78,7 @@ function Reply({ message, role }: { role: Agent; message: string }) {
       }}
       className="mt-2 scale-95 flex items-center justify-start pr-8"
     >
-      <p className="bg-gray-200 rounded-3xl p-3 text-xs">{formattedMessage}</p>
+      <p className="bg-gray-200 rounded-3xl p-3">{formattedMessage}</p>
     </motion.div>
   );
 }
