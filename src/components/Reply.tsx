@@ -78,7 +78,7 @@ function Reply({ message, role }: { role: Agent; message: string }) {
       }}
       className="mt-2 scale-95 flex items-center justify-start pr-8"
     >
-      <p className="bg-gray-200 rounded-3xl p-3">{formattedMessage}</p>
+      <p className="bg-[#DCD6FF] rounded-3xl p-3">{formattedMessage}</p>
     </motion.div>
   );
 }

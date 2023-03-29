@@ -65,22 +65,22 @@ function ChatBox() {
   };
 
   return (
-    <div className="w-screen h-[80vh] sm:h-fit sm:w-96 p-4 rounded-2xl bg-white/20 backdrop-filter backdrop-blur-lg backdrop-saturate-150">
-      <div className="h-full flex flex-col sm:h-fit bg-gray-100 border-gray-200 shadow-sm border-2 p-4 rounded-2xl">
+    <div className="w-screen h-[80vh] sm:w-96 p-4 rounded-2xl bg-white/20 backdrop-filter backdrop-blur-lg backdrop-saturate-150">
+      <div className="h-full flex flex-col bg-[#EEEBFF] shadow-sm border-2 p-4 rounded-2xl">
         {/* <!--  Message header section starts    --> */}
         <div className="msg-header flex gap-8 items-center">
-          <div className="h-12 w-12 justify-center items-center rounded-full border-2">
+          <div className="h-12 w-12 justify-center items-center rounded-full bg-[#DDD6FF] border-2 border-[#B2A4FF]">
             <img className="scale-75" src="/images/cat-face.png" />
           </div>
           <div className="">
-            <h3 className="text-[#8870FF] text-base font-bold">CatGPT</h3>
-            <p className="text-green-400 text-xs animate-pulse">Active now</p>
+            <h3 className="text-[#8870FF] text-lg font-bold">CatGPT</h3>
+            <p className="-mt-1 text-[#22BF90] text-base">Active now</p>
           </div>
         </div>
         {/* {/* <!-- Message header section ends --> */}
-        <div className="mt-2 bg-gray-300 w-72 h-[1.75px]"></div>
+        <div className="mt-2 bg-[#A899FF] w-72 h-[1.75px]"></div>
         {/* <!-- Chat inbox section starts --> */}
-        <div className="grow md:h-[52vh]">
+        <div className="grow md:h-[52vh] overflow-auto">
           <div className="h-full">
             <div className="h-full overflow-auto scrollbar" id="style-1">
               <div className="mt-6 transition-all">
@@ -96,7 +96,7 @@ function ChatBox() {
                     }}
                     className="scale-95 mr-16"
                   >
-                    <p className="bg-gray-200 rounded-3xl p-3 text-base">
+                    <p className="bg-[#DCD6FF] rounded-3xl p-3 text-base">
                       Hi I'm CatGPT, what can I help you with?
                     </p>
                   </motion.div>
@@ -125,12 +125,12 @@ function ChatBox() {
                   sendMessage();
                 }
               }}
-              className="bg-gray-200 border-2 rounded-3xl p-3 w-full text-base focus:outline-none"
+              className="bg-[#DCD6FF] border-2 border-[#A899FF] placeholder:text-black/30 rounded-3xl p-3 w-full text-base focus:outline-none"
               placeholder="Type a message"
             />
             <button
               onClick={sendMessage}
-              className="bg-[#B2A4FF] text-base text-white rounded-full p-3"
+              className="bg-[#B2A4FF] text-base text-white rounded-full p-3 focus:outline-none"
             >
               <ArrowNarrowUpIcon className="h-4 w-4" />
             </button>

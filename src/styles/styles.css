@@ -18,12 +18,12 @@
 #style-1::-webkit-scrollbar
 {
 	width: 6px;
-	background-color: #F5F5F5;
+	background-color: #EDEBFE;
 }
 
 #style-1::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(105, 105, 105, 0.384);
-	background-color: #bdbdbd;
+	-webkit-box-shadow: inset 0 0 6px rgba(231, 219, 255, 0.384);
+	background-color: #DCD6FF;
 }
