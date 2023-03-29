@@ -81,8 +81,8 @@ function ChatBox() {
         <div className="mt-2 bg-gray-300 w-72 h-[1.75px]"></div>
         {/* <!-- Chat inbox section starts --> */}
         <div className="grow md:h-[52vh]">
-          <div className="">
-            <div className="overflow-auto scrollbar" id="style-1">
+          <div className="h-full">
+            <div className="h-full overflow-auto scrollbar" id="style-1">
               <div className="mt-6">
                 {/* <!-- Contains the incoming and outgoing messages --> */}
                 <div ref={messagesRef} className="">
